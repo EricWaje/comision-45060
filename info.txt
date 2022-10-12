@@ -1,0 +1,35 @@
+- Javascrip -
+const foo = () => {}
+
+foo()
+
+- React -
+
+const Foo = () =>{
+    return()
+}
+
+
+
+1. Todos los componentes son funciones
+2. Todos los componentes se escribien con la inicial en mayúsucla
+3. Todos los componentes deben retornar algo
+4. Todos los componentes deben retornar 1 (UN) solo elemento
+5. Los componentes retornar JSX
+
+JSX -> Javascrip + XML
+
+Como leeria el navegador mi código:
+
+JSX -> <div id='contenedor'>Bienvenidos</div>
+Como lo lee el navegador -> react.createElement( "div", { id: "contenedor"}, 'Bienvenidos')
+
+<></> --> React Fragments
+
+rafce -> Atajo para crear plantilla de componente
+
+-> export default importo sin llaves (import Header from './components/Header)
+-> export nombrado importo con llaves (import {Header} from './components/Header)
+
+* Solo puedo tener 1 export default por archivo
+

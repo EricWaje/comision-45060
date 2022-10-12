@@ -13,7 +13,7 @@ const styles = {
 
 const Main = () => {
     return (
-        <main className={estilos.navbar}>
+        <main className={estilos.main}>
             <p style={{ color: 'blue' }}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Perspiciatis ducimus illo dolor blanditiis excepturi natus nam

@@ -12,6 +12,12 @@ const Main = () => {
                 nostrum neque illo voluptatum voluptate, odit animi consequatur
                 quo pariatur perspiciatis quis fuga recusandae voluptas rem!
             </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+                laboriosam impedit, dolore placeat, iste deserunt quaerat enim
+                dignissimos reprehenderit asperiores ipsum, hic quam beatae
+                excepturi tempora repellendus vitae rem vero!
+            </p>
         </main>
     );
 };

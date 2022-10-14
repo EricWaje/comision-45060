@@ -27,9 +27,60 @@ Como lo lee el navegador -> react.createElement( "div", { id: "contenedor"}, 'Bi
 <></> --> React Fragments
 
 rafce -> Atajo para crear plantilla de componente
+react arrow function component export
 
 -> export default importo sin llaves (import Header from './components/Header)
 -> export nombrado importo con llaves (import {Header} from './components/Header)
 
 * Solo puedo tener 1 export default por archivo
+
+
+-- PROPS --
+// const foo = (a,b) =>{
+// return a+ b
+// }
+
+// foo(20,5)
+
+
+//const Foo = (props) =>{}
+
+const saludar = () => console.log('Bienvenidos')
+
+//<Foo key={value} />
+
+<Foo nombre='Eric' edad={27} otraCosa={} />
+
+<Foo persona={{id: 1, nombre: "Fabian"}} />
+<Foo listaDelSuper={["Manzana", "Banana"]} />
+<Foo listaDelSuper={[{},{},{}]} />
+<Foo listaDelSuper={saludar} />
+
+- array
+- objetos
+- funciones
+- booleanos
+- numbers
+- strings (Es el único que puede enviarse sin llaves {})
+- componentes
+
+concatenar strings + variables
+`string ${variable}`
+
+
+Icons
+-React icons (https://react-icons.github.io/react-icons/)
+- Iconos de Google (https://fonts.google.com/?selected=Material+Icons:home)
+
+IMG
+- Link desde la web :
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG7wRVI8zms8XPalGIXwHH5QUGfWvGO9OOXg&usqp=CAU" alt=""/>
+
+- Img desde public: -> Siempre poner la ruta como si ya estuvieramos parados en public
+<img src="logo192.png" alt="" />
+
+- Desde src --> Primero importo la img, le doy un nombre y luego la utilizo entre {} dentro de img
+import logo from '../../img/logo192.png';
+<img src={logo} alt="" />
+
 

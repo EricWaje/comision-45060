@@ -1,9 +1,9 @@
-import Navbar from './Navbar/Navbar';
+import Navbar from './Navbar';
 
 const Header = () => {
     return (
         <header>
-            <Navbar />
+            <Navbar isInHeader={true} />
         </header>
     );
 };

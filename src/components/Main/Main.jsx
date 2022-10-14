@@ -1,32 +1,20 @@
-import estilos from './main.module.css';
+import Button from '../Button';
 
-const styles = {
-    parrafo: {
-        color: 'gold',
-        backgroundColor: 'blue',
-    },
-    contenedor: {
-        color: 'green',
-        backgroundColor: 'yellow',
-    },
-};
+const Main = ({ saludo, edad, datos }) => {
+    //console.log(props); props -> {}
+    //const saludo = props.saludo;
+    //const { saludo } = props;
+    const { nombre, comision } = datos;
 
-const Main = () => {
     return (
-        <main className={estilos.main}>
-            <p style={{ color: 'blue' }}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Perspiciatis ducimus illo dolor blanditiis excepturi natus nam
-                aliquam sed error delectus, similique ipsum provident molestiae
-                doloribus commodi, eligendi officia labore omnis.
+        <main>
+            <p>Hola! {saludo}</p>
+            <p>Mi edad es {edad} años</p>
+            <p>
+                {nombre} - {comision}
             </p>
-            <p style={styles.parrafo}>Bienvenidos a la clase 3</p>
-            <div style={styles.contenedor}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-                tenetur deserunt atque in quidem distinctio odio vero ratione,
-                accusamus veritatis, necessitatibus officiis. Corrupti impedit
-                saepe maxime temporibus. Sed, nulla eius!
-            </div>
+
+            <Button text="Bienvenidos" />
         </main>
     );
 };

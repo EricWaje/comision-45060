@@ -11,11 +11,12 @@ const Foo = () =>{
 
 
 
-1. Todos los componentes son funciones
-2. Todos los componentes se escribien con la inicial en mayúsucla
-3. Todos los componentes deben retornar algo
-4. Todos los componentes deben retornar 1 (UN) solo elemento
-5. Los componentes retornar JSX
+1. Todos los componentes son funciones.
+2. Todos los componentes se escribien con la inicial en mayúsucla.
+3. Todos los componentes deben retornar algo.
+4. Todos los componentes deben retornar 1 (UN) solo elemento.
+5. Los componentes retornan JSX.
+6. Todos los componentes pueden recibir props ({}) o enviar props a otros componentes.
 
 JSX -> Javascrip + XML
 
@@ -83,4 +84,22 @@ IMG
 import logo from '../../img/logo192.png';
 <img src={logo} alt="" />
 
+
+Eventos
+- Se escrbien con camelCase (TODOS!) y se escriben en la propia etiqueta html.
+
+CADA VEZ QUE HAYA UN CAMBIO DE ESATDO, VAMBIO DE PROP O UN EVENTO QUE DISPARE UN CAMBIO DE ESTADO O UN CAMBIO DE PROP, SE VOLVERA A RENDERIZAR EL COMPONENTE
+
+ESTADOS:
+Hook --> useState()  ->  const [1,2] = useState()
+
+- La primera posicion es mi estado y la segunda la función seteadora
+- Dentro de los paréntesis puedo poner un valor inicial para que mi estado no arranque en undefined
+
+const [state, setState] = useState(0) -> 0 es mi valor inicial.
+
+La única manera que tengo de modificar mi estado es a través de la función seteadora.
+setState( state + 10)
+
+React solo modifica el DOM cuando escucha que se emite una función seteadora.
 

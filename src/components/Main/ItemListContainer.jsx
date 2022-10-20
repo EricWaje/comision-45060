@@ -1,45 +1,71 @@
 import React, { useEffect, useState } from 'react';
+import { products } from '../../mock/products';
 
 const ItemListContainer = () => {
-    const [count, setCount] = useState(0);
-    const [texto, setTexto] = useState('Carla');
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
-        //codigo que se ejecuta LUEGO del render y SIEMPRE que se renderice el componente
-        console.log('Me renderizo siempre');
-    });
-
-    useEffect(() => {
-        //codigo que se ejecuta LUEGO del render, UNA sola vez
-        //llamadas asincrónicas
-        console.log('Me renderizo 1 sola vez');
+        const getProducts = () => {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    res(products);
+                }, 2000);
+            });
+        };
+        //console.log(task); //esto me devuelve una promesa
+        getProducts()
+            .then((res) => {
+                //console.log('res', res);
+                setItems(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }, []);
 
-    useEffect(() => {
-        //codigo que se ejecuta LUEGO del render, UNA sola vez y CADA VEZ QUE CAMBIE LA DEPENDENCIA
-        console.log('Me renderizo una vez y cada vez que cambie el texto');
-    }, [texto]);
-
-    const sumar = () => {
-        setCount(count + 1);
-    };
-
-    const cambiarTexto = () => {
-        setTexto('Eric');
-    };
+    //console.log(items);
 
     return (
         <div id="container">
-            <p onClick={sumar}>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Doloribus beatae veniam architecto dolor. Rerum distinctio ad
-                at, officiis sapiente quas! Quidem ea sequi molestiae, ad
-                voluptas repudiandae vitae molestias quos.
-            </p>
-            <h1>{texto}</h1>
-            <button onClick={cambiarTexto}>Cambiar texto</button>
+            {items.map((producto) => {
+                return (
+                    <div key={producto.id}>
+                        <img
+                            src={producto.img}
+                            width="200px"
+                            alt={producto.title}
+                        />
+                        <article>
+                            <h2>{producto.title}</h2>
+                            <h3>${producto.price}.-</h3>
+                        </article>
+                    </div>
+                );
+            })}
         </div>
     );
 };
 
 export default ItemListContainer;
+
+//  {
+//      items.map((producto) => {
+//          return (
+//              <div key={producto.id}>
+//                  <img src={producto.img} width="200px" alt={producto.title} />
+//                  <article>
+//                      <h2>{producto.title}</h2>
+//                      <h3>${producto.price}.-</h3>
+//                  </article>
+//              </div>
+//          );
+//      });
+//  }
+
+//  {
+//      items.map((producto) => {
+//          return (
+//              <Item key={producto.id} producto={producto}/>
+//          );
+//      });
+//  }

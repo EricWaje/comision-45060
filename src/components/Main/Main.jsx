@@ -1,9 +1,6 @@
 import Button from '../Button';
 
 const Main = ({ saludo, edad, datos, saludar }) => {
-    //console.log(props); props -> {}
-    //const saludo = props.saludo;
-    //const { saludo } = props;
     const { nombre, comision } = datos;
 
     return (

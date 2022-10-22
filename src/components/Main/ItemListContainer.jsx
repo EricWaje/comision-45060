@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { products } from '../../mock/products';
+import ItemList from './ItemList';
 
-const ItemListContainer = () => {
+const ItemListContainer = ({ saludo }) => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -12,10 +13,8 @@ const ItemListContainer = () => {
                 }, 2000);
             });
         };
-        //console.log(task); //esto me devuelve una promesa
         getProducts()
             .then((res) => {
-                //console.log('res', res);
                 setItems(res);
             })
             .catch((error) => {
@@ -23,49 +22,12 @@ const ItemListContainer = () => {
             });
     }, []);
 
-    //console.log(items);
-
     return (
-        <div id="container">
-            {items.map((producto) => {
-                return (
-                    <div key={producto.id}>
-                        <img
-                            src={producto.img}
-                            width="200px"
-                            alt={producto.title}
-                        />
-                        <article>
-                            <h2>{producto.title}</h2>
-                            <h3>${producto.price}.-</h3>
-                        </article>
-                    </div>
-                );
-            })}
+        <div className="container">
+            <h2>{saludo}</h2>
+            <ItemList items={items} />
         </div>
     );
 };
 
 export default ItemListContainer;
-
-//  {
-//      items.map((producto) => {
-//          return (
-//              <div key={producto.id}>
-//                  <img src={producto.img} width="200px" alt={producto.title} />
-//                  <article>
-//                      <h2>{producto.title}</h2>
-//                      <h3>${producto.price}.-</h3>
-//                  </article>
-//              </div>
-//          );
-//      });
-//  }
-
-//  {
-//      items.map((producto) => {
-//          return (
-//              <Item key={producto.id} producto={producto}/>
-//          );
-//      });
-//  }

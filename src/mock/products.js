@@ -1,7 +1,8 @@
 export const products = [
     {
         id: 1,
-        title: 'Remera verde',
+        descuento: 15,
+        title: 'Remera',
         price: 2000,
         stock: 10,
         category: 'remeras',
@@ -9,6 +10,7 @@ export const products = [
     },
     {
         id: 2,
+        descuento: 35,
         title: 'Billetera',
         price: 200,
         stock: 5,
@@ -17,10 +19,19 @@ export const products = [
     },
     {
         id: 3,
-        title: 'Camisas',
+        descuento: 50,
+        title: 'Camisa',
         price: 3000,
         stock: 7,
         category: 'camisas',
         img: 'https://res.cloudinary.com/ericwaje/image/upload/v1619372705/camisa2_tmojul.jpg',
     },
 ];
+
+// export const getProducts = () => {
+//     return new Promise((res, rej) => {
+//         setTimeout(() => {
+//             res(products);
+//         }, 2000);
+//     });
+// };

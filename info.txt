@@ -103,3 +103,73 @@ setState( state + 10)
 
 React solo modifica el DOM cuando escucha que se emite una función seteadora.
 
+useEffect
+ - Este kook se utiliza para ejecutar código luego del primer renderizado del componente.
+ - Con ese hook logramos NO bloquear el renderizado del DOM.
+ 
+1)
+ - El código que esté dentro del efecto se ejecutará una vez luego del primer render y siempre que se actualice el componente.
+ 
+ useEffect(()=> {})
+
+2)
+ - El código que esté dentro del efecto se ejecutará una vez luego del primer render y no volverá a ejecutarse por más de que se actualice el componente.
+ 
+ useEffect(()=> {}, [])
+
+3)
+ - El código que esté dentro del efecto se ejecutará una vez luego del primer render y cada vez que cambie la dependencia.
+ 
+ useEffect(()=> {}, [dependencia])
+
+
+
+
+ MAP
+ Utilizamos el método map para renderizar una lista de elementos en React dentro de JSX
+
+MAP con {} y return
+{
+    Array.map((iterador)=>{
+        return (
+            <div>
+                <h2>{iterador.title}</h2>
+                <h2>{iterador.price}</h2>
+            </div>
+        )
+    })
+}
+
+ MAP sin {} y sin return
+
+{
+    Array.map((iterador)=>
+        (
+            <div>
+                <h2>{iterador.title}</h2>
+                <h2>{iterador.price}</h2>
+            </div>
+        )
+    )
+ }
+
+
+PROMESAS
+
+- new Promise ((res,rej) => {})
+
+Puedo crear mi promesa dentro de una función.
+
+const getProducts = () => {
+    return new Promise ((res,rej)=>{
+        res('Bienvenidos')
+    })
+}
+
+Utilizamos los métodos .then y .catch para poder manipular la información que nos llega de la promesa. En el caso de que se resuelva correctamente nos va a llegar la información al then y en el caso de que la promesa sea rechazada vamos a poder manipular los datos desde el .catch
+
+getProducts
+ .then(()=>{})
+ .catch(()=>{})
+
+

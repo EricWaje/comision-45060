@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const Contador = ({ stock }) => {
-    const [cantidad, setCantidad] = useState(0);
+const Contador = ({ stock, onAdd }) => {
+    const [cantidad, setCantidad] = useState(1);
 
     const sumar = () => {
         if (cantidad < stock) {
@@ -9,9 +9,17 @@ const Contador = ({ stock }) => {
         }
     };
 
+    const restar = () => {
+        if (cantidad > 1) {
+            setCantidad(cantidad - 1);
+        }
+    };
+
     const reset = () => {
         setCantidad(0);
     };
+
+    const agregar = () => onAdd(cantidad);
 
     return (
         <div
@@ -22,11 +30,13 @@ const Contador = ({ stock }) => {
                 minHeight: '80vh',
             }}
         >
+            <button onClick={restar}>-</button>
             <p>{cantidad}</p>
             <button disabled={cantidad === stock} onClick={sumar}>
                 +
             </button>
             <button onClick={reset}>Volver a 0</button>
+            <button onClick={agregar}>Agregar al carrito</button>
         </div>
     );
 };

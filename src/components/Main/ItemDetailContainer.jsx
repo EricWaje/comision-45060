@@ -1,10 +1,24 @@
-const getProducts = () => {
-    return new Promise((res, rej) => {
-        //alguna lógica para obtetner 1 solo producto
-        //método de array me devuelve un objeto
-        //const product = products.find((prod)=>prod.id === variable)
-        setTimeout(() => {
-            res(product);
-        }, 2000);
-    });
+import React from 'react';
+import ItemDetail from './ItemDetail';
+import { useParams } from 'react-router-dom';
+
+const ItemDetailContainer = () => {
+    const { idProd } = useParams();
+
+    console.log(idProd);
+    console.log(typeof idProd); //Number(idProd) / +idProd / parseInt(idProd)
+
+    return (
+        <div
+            style={{
+                margin: '10px',
+                border: '2px solid black',
+                padding: '10px',
+            }}
+        >
+            <ItemDetail />
+        </div>
+    );
 };
+
+export default ItemDetailContainer;

@@ -28,10 +28,14 @@ export const products = [
     },
 ];
 
-// export const getProducts = () => {
-//     return new Promise((res, rej) => {
-//         setTimeout(() => {
-//             res(products);
-//         }, 2000);
-//     });
-// };
+export const getProducts = (categoryName) => {
+    return new Promise((res, rej) => {
+        const prodFiltrados = products.filter(
+            (prod) => prod.category === categoryName
+        );
+        const ref = categoryName ? prodFiltrados : products;
+        setTimeout(() => {
+            res(ref);
+        }, 500);
+    });
+};

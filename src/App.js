@@ -1,22 +1,29 @@
 import './App.css';
-import EjemploApis from './components/EjemploApis';
-//import Footer from './components/Footer/Footer';
-//import Header from './components/Header/Header';
-import Navbar from './components/Header/Navbar';
-import Contador from './components/Main/Contador';
-//import ItemListContainer from './components/Main/ItemListContainer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import ItemListContainer from './components/Main/ItemListContainer';
+import ItemDetailContainer from './components/Main/ItemDetailContainer';
+import Cart from './components/Cart/Cart';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
-    const onAdd = (qty) => console.log(qty);
-
     return (
-        <>
-            <Navbar isInHeader={true} />
-            <EjemploApis />
-            {/* <ItemListContainer saludo="Bienvenidos al mejor sitio para comprar 😎" /> */}
-            <Contador stock={10} onAdd={onAdd} />
-            {/* <Footer /> */}
-        </>
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path="/" element={<ItemListContainer />} />
+                <Route
+                    path="/categoria/:categoryName"
+                    element={<ItemListContainer />}
+                />
+                <Route
+                    path="/detail/:idProd"
+                    element={<ItemDetailContainer />}
+                />
+                <Route path="/cart" element={<Cart />} />
+            </Routes>
+            <Footer />
+        </BrowserRouter>
     );
 };
 

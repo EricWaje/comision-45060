@@ -9,10 +9,17 @@ const Item = ({ producto }) => {
                 <h2>{producto.title}</h2>
                 <h4 className="descuento">{producto.descuento}% off</h4>
                 <div className="info-price">
-                    <h3>${(producto.price * producto.descuento) / 100}.-</h3>
+                    <h3>
+                        $
+                        {producto.price -
+                            (producto.price * producto.descuento) / 100}
+                        .-
+                    </h3>
                     <h5>${producto.price}.-</h5>
                 </div>
-                <Link to={`/detail/${producto.id}`}>Ver Detalle</Link>
+                <Link className="btn-detalle" to={`/detail/${producto.id}`}>
+                    Ver Detalle
+                </Link>
             </article>
         </div>
     );

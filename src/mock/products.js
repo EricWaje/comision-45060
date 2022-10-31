@@ -24,7 +24,7 @@ export const products = [
         price: 3000,
         stock: 7,
         category: 'camisas',
-        img: 'https://res.cloudinary.com/ericwaje/image/upload/v1619372705/camisa2_tmojul.jpg',
+        img: 'https://res.cloudinary.com/ericwaje/image/upload/v1619372706/camisa4_ehruek.jpg',
     },
 ];
 
@@ -37,5 +37,14 @@ export const getProducts = (categoryName) => {
         setTimeout(() => {
             res(ref);
         }, 500);
+    });
+};
+
+export const getProduct = (idProd) => {
+    return new Promise((res, rej) => {
+        const product = products.find((prod) => prod.id === +idProd);
+        setTimeout(() => {
+            res(product);
+        }, 2000);
     });
 };

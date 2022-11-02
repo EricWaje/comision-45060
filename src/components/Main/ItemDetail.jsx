@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Contador from './Contador';
 
 const ItemDetail = ({ item }) => {
-    const onAdd = (qty) => console.log(qty);
+    //const [cant, setCant] = useState(0);
+    const [show, setShow] = useState(true);
+
+    const onAdd = (qty) => {
+        console.log(qty);
+        //setCant(qty);
+        setShow(false);
+    };
+
     return (
         <div className="detail">
             <img src={item.img} alt={item.title} />
             <article>
-                <h2>{item.title}</h2>
+                {show ? (
+                    <h2>{item.title}</h2>
+                ) : (
+                    <h2>Este producto no tiene titulo</h2>
+                )}
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Natus optio, necessitatibus iusto odit cupiditate a quae
@@ -22,3 +34,5 @@ const ItemDetail = ({ item }) => {
 };
 
 export default ItemDetail;
+
+//const foo = (argumento) => {}

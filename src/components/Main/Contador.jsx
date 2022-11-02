@@ -1,9 +1,7 @@
 import { useState } from 'react';
-//import { useNavigate } from 'react-router-dom';
 
 const Contador = ({ stock, onAdd }) => {
     const [cantidad, setCantidad] = useState(1);
-    //const navigate = useNavigate();
 
     const sumar = () => {
         if (cantidad < stock) {
@@ -19,9 +17,6 @@ const Contador = ({ stock, onAdd }) => {
 
     const agregar = () => {
         onAdd(cantidad);
-        //setTimeout(()=>{
-        //navigate('/cart');
-        //}, 5000)
     };
 
     return (
@@ -46,3 +41,5 @@ const Contador = ({ stock, onAdd }) => {
 };
 
 export default Contador;
+
+//foo(parametro)

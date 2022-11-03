@@ -22,7 +22,7 @@ const ItemListContainer = () => {
     }, [categoryName]);
 
     return (
-        <div onClick={() => console.log('click en ITLC')} className="container">
+        <div className="container">
             <ItemList items={items} />
         </div>
     );

@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 import Contador from './Contador';
 
 const ItemDetail = ({ item }) => {
     //const [cant, setCant] = useState(0);
     const [show, setShow] = useState(true);
 
+    const { addToCart } = useContext(CartContext);
+
     const onAdd = (qty) => {
-        console.log(qty);
+        //console.log(qty);
         //setCant(qty);
         setShow(false);
+        addToCart(item, qty);
     };
 
     return (

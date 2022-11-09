@@ -35,6 +35,10 @@ const CartProvider = ({ children }) => {
     };
 
     //funcion para eliminar un solo producto
+    const deleteOne = (id) => {
+        const prodFiltrados = cart.filter((prod) => prod.id !== id);
+        setCart(prodFiltrados);
+    };
 
     //funcion para sumar total $ del carrito
 
@@ -45,7 +49,7 @@ const CartProvider = ({ children }) => {
     //variables
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, deleteAll }}>
+        <CartContext.Provider value={{ cart, addToCart, deleteAll, deleteOne }}>
             {children}
         </CartContext.Provider>
     );

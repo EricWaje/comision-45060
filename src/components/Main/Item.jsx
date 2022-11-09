@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Item = ({ producto }) => {
+    //console.log('item');
     return (
         <div className="item">
             <img src={producto.img} width="200px" alt={producto.title} />

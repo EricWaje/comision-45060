@@ -6,7 +6,7 @@ const Navbar = ({ isInHeader }) => {
     //console.log(isInHeader);
 
     return (
-        <nav className="navbar">
+        <nav className={isInHeader ? 'navbar' : 'footer'}>
             <h1>
                 <Link className="links" to="/">
                     Comisión 45060
@@ -23,9 +23,11 @@ const Navbar = ({ isInHeader }) => {
                     Billeteras
                 </NavLink>
             </ul>
-            <Link className="links" to="/cart">
-                <CartWidget />
-            </Link>
+            {isInHeader && (
+                <Link className="links" to="/cart">
+                    <CartWidget />
+                </Link>
+            )}
         </nav>
     );
 };

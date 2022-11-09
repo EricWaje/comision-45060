@@ -20,6 +20,7 @@ const ItemDetail = ({ item }) => {
         <div className="detail">
             <img src={item.img} alt={item.title} />
             <article>
+                <h2>{item.title}</h2>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Natus optio, necessitatibus iusto odit cupiditate a quae

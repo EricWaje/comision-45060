@@ -36,7 +36,7 @@ export const getProducts = (categoryName) => {
         const ref = categoryName ? prodFiltrados : products;
         setTimeout(() => {
             res(ref);
-        }, 2500);
+        }, 500);
     });
 };
 
@@ -45,6 +45,6 @@ export const getProduct = (idProd) => {
         const product = products.find((prod) => prod.id === +idProd);
         setTimeout(() => {
             res(product);
-        }, 2000);
+        }, 500);
     });
 };

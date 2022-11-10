@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const Contador = ({ stock, onAdd }) => {
-    const [cantidad, setCantidad] = useState(1);
+const Contador = ({ stock, onAdd, initial = 1 }) => {
+    const [cantidad, setCantidad] = useState(initial);
 
     const sumar = () => {
         //cantidad < stock ? setCantidad(cantidad + 1) : alert('No se pude seguir sumado')

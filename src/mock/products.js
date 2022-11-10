@@ -16,6 +16,7 @@ export const products = [
         stock: 5,
         category: 'billeteras',
         img: 'https://res.cloudinary.com/ericwaje/image/upload/v1619372706/billetera2C_bf0hvq.jpg',
+        //img: '/img/remera.jpg'
     },
     {
         id: 3,

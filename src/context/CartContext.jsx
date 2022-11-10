@@ -23,11 +23,10 @@ const CartProvider = ({ children }) => {
     //funcion para sumar la cantidad de un mismo producto
     const sumarCantidad = (itemPorAgregar, cantidad) => {
         const cartActualizado = cart.map((prodDelCarrito) => {
-            if (itemPorAgregar.id === prodDelCarrito.id) {
+            if (prodDelCarrito.id === itemPorAgregar.id) {
                 const productoActualizado = {
                     ...prodDelCarrito,
-                    cantidad: prodDelCarrito.cantidad + cantidad,
-                    //cantidad
+                    cantidad,
                 };
                 return productoActualizado;
             } else {
@@ -77,6 +76,11 @@ const CartProvider = ({ children }) => {
 
     const totalPrecio = () => 1000;
 
+    const cantidadDeProducto = (id) => {
+        const product = cart.find((prod) => prod.id === id);
+        return product?.cantidad;
+    };
+
     //console.log(cart);
 
     //variables
@@ -90,6 +94,7 @@ const CartProvider = ({ children }) => {
                 deleteOne,
                 totalUnidades,
                 totalPrecio,
+                cantidadDeProducto,
             }}
         >
             {children}

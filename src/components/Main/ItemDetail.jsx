@@ -7,7 +7,7 @@ const ItemDetail = ({ item }) => {
     //const [cant, setCant] = useState(0);
     const [show, setShow] = useState(true);
 
-    const { addToCart } = useContext(CartContext);
+    const { addToCart, cantidadDeProducto } = useContext(CartContext);
 
     const onAdd = (qty) => {
         //console.log(qty);
@@ -15,6 +15,8 @@ const ItemDetail = ({ item }) => {
         setShow(false);
         addToCart(item, qty);
     };
+
+    const cantidad = cantidadDeProducto(item.id);
 
     return (
         <div className="detail">
@@ -30,7 +32,11 @@ const ItemDetail = ({ item }) => {
                 <h3>${item.price}.-</h3>
                 {/* <h3>{show ? 'True' : 'False'}</h3> */}
                 {show ? (
-                    <Contador stock={item.stock} onAdd={onAdd} />
+                    <Contador
+                        stock={item.stock}
+                        onAdd={onAdd}
+                        initial={cantidad}
+                    />
                 ) : (
                     <Link to="/cart">Ir al carrito</Link>
                 )}

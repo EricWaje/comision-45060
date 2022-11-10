@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 //import PacmanLoader from 'react-spinners/PacmanLoader';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { getDocs, query, where } from 'firebase/firestore';
+import { collectionProd } from '../../services/firebaseConfig';
 
 const ItemListContainer = () => {
     //console.log('itemListContainer');
@@ -17,9 +19,20 @@ const ItemListContainer = () => {
     const { categoryName } = useParams();
 
     useEffect(() => {
-        getProducts(categoryName)
+        //const q = query(collectionProd, where('category', '==', categoryName));
+
+        getDocs(collectionProd)
             .then((res) => {
-                setItems(res);
+                //console.log(res.docs);
+                const products = res.docs.map((prod) => {
+                    //console.log(prod);
+                    //console.log(prod.data());
+                    return {
+                        id: prod.id,
+                        ...prod.data(),
+                    };
+                });
+                setItems(products);
             })
             .catch((error) => {
                 console.log(error);
@@ -27,6 +40,17 @@ const ItemListContainer = () => {
             .finally(() => {
                 setLoading(false);
             });
+
+        // getProducts(categoryName)
+        //     .then((res) => {
+        //         setItems(res);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
+        //     .finally(() => {
+        //         setLoading(false);
+        //     });
 
         return () => setLoading(true);
     }, [categoryName]);

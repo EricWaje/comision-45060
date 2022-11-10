@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
-import { getProduct } from '../../mock/products';
+//import { getProduct } from '../../mock/products';
+import { doc, getDoc } from 'firebase/firestore';
+import { collectionProd } from '../../services/firebaseConfig';
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
@@ -9,9 +11,15 @@ const ItemDetailContainer = () => {
     const { idProd } = useParams();
 
     useEffect(() => {
-        getProduct(idProd)
+        const ref = doc(collectionProd, idProd);
+
+        getDoc(ref)
             .then((res) => {
-                setItem(res);
+                //console.log(res);
+                setItem({
+                    id: res.id,
+                    ...res.data(),
+                });
             })
             .catch((error) => {
                 console.log(error);
@@ -19,6 +27,17 @@ const ItemDetailContainer = () => {
             .finally(() => {
                 setLoading(false);
             });
+
+        // getProduct(idProd)
+        //     .then((res) => {
+        //         setItem(res);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
+        //     .finally(() => {
+        //         setLoading(false);
+        //     });
     }, [idProd]);
 
     if (loading) {

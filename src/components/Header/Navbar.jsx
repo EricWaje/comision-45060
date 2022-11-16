@@ -1,9 +1,32 @@
 import React from 'react';
 import CartWidget from './CartWidget';
 import { Link, NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { useState } from 'react';
+import { db } from '../../services/firebaseConfig';
 
 const Navbar = ({ isInHeader }) => {
-    //console.log(isInHeader);
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const catCollection = collection(db, 'categorias');
+        getDocs(catCollection)
+            .then((res) => {
+                const secciones = res.docs.map((prod) => {
+                    return {
+                        id: prod.id,
+                        ...prod.data(),
+                    };
+                });
+                setCategories(secciones);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+    //console.log(categories);
 
     return (
         <nav className={isInHeader ? 'navbar' : 'footer'}>
@@ -13,15 +36,15 @@ const Navbar = ({ isInHeader }) => {
                 </Link>
             </h1>
             <ul>
-                <NavLink className="links" to="/categoria/remeras">
-                    Remeras
-                </NavLink>
-                <NavLink className="links" to="/categoria/camisas">
-                    Camisas
-                </NavLink>
-                <NavLink className="links" to="/categoria/billeteras">
-                    Billeteras
-                </NavLink>
+                {categories.map((cat) => (
+                    <NavLink
+                        key={cat.id}
+                        className="links"
+                        to={`/categoria/${cat.path}`}
+                    >
+                        {cat.title}
+                    </NavLink>
+                ))}
             </ul>
             {isInHeader && (
                 <Link className="links" to="/cart">

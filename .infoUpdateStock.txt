@@ -1,0 +1,66 @@
+const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const objOrder = {
+                buyer: {
+                    name,
+                    lastName,
+                    phone: '123456789',
+                    address: 'direccion 123',
+                },
+                items: cart,
+                totalPrice,
+                date: serverTimestamp(),
+            };
+
+            const ids = cart.map((prod) => prod.id); --> ["1432jh", "jfwklj3454", "jsafj32423"]
+
+            const productsRef = collection(db, 'productos');
+
+            const productsAddedFromFirestore = await getDocs(
+                query(productsRef, where(documentId(), 'in', ids))
+            );
+
+            const { docs } = productsAddedFromFirestore;
+
+            const outOfStock = [];
+
+            const batch = writeBatch(db);
+
+            docs.forEach((doc) => {
+                const dataDoc = doc.data();
+                const stockDb = dataDoc.stock;
+
+                const productAddedToCart = cart.find(
+                    (prod) => prod.id === doc.id
+                );
+                const prodQuantity = productAddedToCart?.cantidad;
+
+                if (stockDb >= prodQuantity) {
+                    batch.update(doc.ref, { stock: stockDb - prodQuantity });
+                } else {
+                    outOfStock.push({ id: doc.id, ...dataDoc });
+                }
+            });
+
+            if (outOfStock.length === 0) {
+                await batch.commit();
+
+                const orderRef = collection(db, 'orders');
+                const orderAdded = await addDoc(orderRef, objOrder);
+
+                console.log(`El id de su orden es: ${orderAdded.id}`);
+                deleteAll();
+                setOrderId(orderAdded.id);
+            } else {
+                console.log('Hay productos que estan fuera de stock');
+            }
+
+            console.log(outOfStock);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
+    };

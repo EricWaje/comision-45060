@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
 //import { getProduct } from '../../mock/products';
-import { doc, getDoc } from 'firebase/firestore';
-import { collectionProd } from '../../services/firebaseConfig';
+import { collection, doc, getDoc } from 'firebase/firestore';
+import { collectionProd, db } from '../../services/firebaseConfig';
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
@@ -11,6 +11,7 @@ const ItemDetailContainer = () => {
     const { idProd } = useParams();
 
     useEffect(() => {
+        const collectionProd = collection(db, 'productos');
         const ref = doc(collectionProd, idProd);
 
         getDoc(ref)
@@ -27,17 +28,6 @@ const ItemDetailContainer = () => {
             .finally(() => {
                 setLoading(false);
             });
-
-        // getProduct(idProd)
-        //     .then((res) => {
-        //         setItem(res);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
-        //     .finally(() => {
-        //         setLoading(false);
-        //     });
     }, [idProd]);
 
     if (loading) {

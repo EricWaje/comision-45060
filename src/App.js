@@ -7,6 +7,15 @@ import Cart from './components/Cart/Cart';
 import Form from './components/Form/Form';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CartProvider from './context/CartContext';
+// import { addDoc, collection } from 'firebase/firestore';
+// import { db } from './services/firebaseConfig';
+// import { products } from './mock/products';
+
+// const prodCollection = collection(db, 'productos');
+
+// products.forEach((prod) => addDoc(prodCollection, prod));
+
+//addDoc
 
 const App = () => {
     return (

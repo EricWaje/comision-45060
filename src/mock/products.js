@@ -1,6 +1,5 @@
 export const products = [
     {
-        id: 1,
         descuento: 15,
         title: 'Remera',
         price: 2000,
@@ -9,7 +8,6 @@ export const products = [
         img: 'https://res.cloudinary.com/ericwaje/image/upload/v1619372707/remera4_wyfums.jpg',
     },
     {
-        id: 2,
         descuento: 35,
         title: 'Billetera',
         price: 200,
@@ -19,7 +17,6 @@ export const products = [
         //img: '/img/remera.jpg'
     },
     {
-        id: 3,
         descuento: 50,
         title: 'Camisa',
         price: 3000,

@@ -17,6 +17,8 @@ import CartProvider from './context/CartContext';
 
 //addDoc
 
+//console.log(process.env);
+
 const App = () => {
     return (
         <BrowserRouter>

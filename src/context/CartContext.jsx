@@ -36,18 +36,6 @@ const CartProvider = ({ children }) => {
         setCart(cartActualizado);
     };
 
-    // const sumarCantidadTernario = (itemPorAgregar, cantidad) => {
-    //     const cartActualizado2 = cart.map((prodDelCarrito) =>
-    //         itemPorAgregar.id === prodDelCarrito.id
-    //             ? {
-    //                   ...prodDelCarrito,
-    //                   cantidad: prodDelCarrito.cantidad + cantidad,
-    //               }
-    //             : prodDelCarrito
-    //     );
-    //     setCart(cartActualizado2)
-    // };
-
     //funcion para vaciar el carrito
     const deleteAll = () => {
         setCart([]);
